@@ -1,0 +1,37 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container mt-5">
+  <mat-card>
+    <h2 mat-card-title>Организации</h2>
+
+    <button mat-button (click)="openCreateDialog()">Новая организация</button>
+    <a mat-button routerLink="/">Вернуться</a>
+  </mat-card>
+
+  <mat-list>
+    <h3 matSubheader>Зарегистрированные организации</h3>
+    <div *ngFor="let organization of allOrganizations">
+      <app-organization-item
+        [allOrganizations]="allOrganizations"
+        [organization]="organization"
+      ></app-organization-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+  <mat-list>
+    <h3 matSubheader>Активные организации</h3>
+    <div *ngFor="let organization of activeOrganizations">
+      <app-organization-item
+        [activeOrganizations]="activeOrganizations"
+        [organization]="organization"
+      ></app-organization-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+</div>

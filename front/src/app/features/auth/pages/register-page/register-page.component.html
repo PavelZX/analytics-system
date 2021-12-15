@@ -1,0 +1,87 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container">
+  <mat-card>
+    <h2 mat-card-title>Регистрация</h2>
+    <p mat-card-subtitle>Создать новый аккаунт</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <mat-form-field class="full-width">
+        <mat-label>Ваше имя</mat-label>
+        <input
+          type="text"
+          formControlName="firstName"
+          placeholder="Type in your firstName"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Номер телефона</mat-label>
+        <input
+          type="text"
+          formControlName="mobileNumber"
+          placeholder="Введите номер телефона"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Пароль</mat-label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Type in your password"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Type in your email"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <a routerLink="/" mat-button mat-raised-button>Вернуться</a>
+        <button mat-button mat-raised-button color="primary">Регистрация</button>
+      </mat-card-actions>
+    </form>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="registerWithFacebook()"
+      class="mr"
+    >
+      Регистрация с Facebook
+    </button>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="registerWithGoogle()"
+      class="mr"
+    >
+      Регистрация с Google
+    </button>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="registerWithApple()"
+    >
+      Регистрация с Apple
+    </button>
+  </mat-card>
+</div>

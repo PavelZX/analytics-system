@@ -1,0 +1,46 @@
+<div>
+  <h3 *ngIf="type === ActionType.Create">Создать организацию</h3>
+  <form [formGroup]="upsertForm" (ngSubmit)="submit()">
+    <mat-form-field class="full-width">
+      <mat-label>Наименование</mat-label>
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="Введите название новой организации"
+        matInput
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Описание</mat-label>
+      <input
+        type="text"
+        formControlName="description"
+        placeholder="Введите описание вашей организации"
+        matInput
+      />
+    </mat-form-field>
+    <mat-slide-toggle
+      class="d-block mb-3"
+      color="primary"
+      formControlName="isActive"
+    >
+      Активация
+    </mat-slide-toggle>
+    <mat-form-field class="full-width">
+      <input
+      type="text"
+      formControlName="balance"
+      placeholder="Стартовый баланс"
+      matInput
+      />
+    <mat-label>Баланс</mat-label>
+  </mat-form-field>
+    <button mat-raised-button>
+      {{ type === ActionType.Create ? 'Create' : 'Update' }}
+    </button>
+  </form>
+</div>
+
+<ng-template #update>
+  <h3>Обновить организацию {{ organization.title }}</h3>
+</ng-template>

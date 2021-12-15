@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  angular:
+    build: ../front
+    container_name: angular
+    restart: always
+    ports:
+      - "4200:4200"
+    depends_on:
+      - nestjs
+
+  nestjs:
+    build: .
+    container_name: nestjs
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      VAPID_SUBJECT: 'mailto:uefpro@gmail.com'
+      VAPID_PRIVATE_KEY: ''
+      VAPID_PUBLIC_KEY: ''
+
+  nginx:
+    build: loadbalancer
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/templates:/etc/nginx/templates/
+    links:
+      - angular
+      - nestjs
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./docker/volumes/mongodb_data_container:/data/db
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"

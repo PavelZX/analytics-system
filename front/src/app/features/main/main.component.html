@@ -1,0 +1,21 @@
+<div class="container" *ngIf="!user; else logged">
+  <a routerLink="/login" mat-button mat-raised-button>Войти</a>
+  <a routerLink="/register" mat-button mat-raised-button>Зарегистрироваться</a>
+  <a routerLink="/recover" mat-button mat-raised-button>Забыли свой пароль?</a>
+</div>
+
+<ng-template #logged>
+  <div class="container">
+    <h3>
+      Добро пожаловать, <b>{{ user.firstName }}</b
+      >!
+    </h3>
+    <button (click)="logout()" mat-button mat-raised-button>Выйти</button>
+    <a routerLink="/users" mat-button mat-raised-button>Пользователи</a>
+    <a routerLink="/organizations" mat-button mat-raised-button>Организации</a>
+    <a routerLink="/advertisings" mat-button mat-raised-button>Рекламные компании</a>
+    <a routerLink="/channels" mat-button mat-raised-button>Каналы рекламы</a>
+    <a routerLink="/rooms" mat-button mat-raised-button>Комнаты чата</a>
+    <a routerLink="/settings" mat-button mat-raised-button>Настройки</a>
+  </div>
+</ng-template>

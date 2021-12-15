@@ -1,0 +1,76 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container">
+  <mat-card>
+    <h2 mat-card-title>Войти</h2>
+    <p mat-card-subtitle>Войти в ваш аккаунт</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <mat-form-field class="full-width">
+        <mat-label>Ваше имя?</mat-label>
+        <input
+          type="text"
+          formControlName="firstName"
+          placeholder="Введите ваше имя"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Номер телефона</mat-label>
+        <input
+          type="text"
+          formControlName="mobileNumber"
+          placeholder="Введите номер телефона"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Пароль</mat-label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Введите пароль"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <a routerLink="/" mat-button mat-raised-button>Назад</a>
+        <button mat-button mat-raised-button color="primary">Войти</button>
+      </mat-card-actions>
+    </form>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="loginWithFacebook()"
+      class="mr"
+    >
+      Войти с Facebook
+    </button>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="loginWithGoogle()"
+      class="mr"
+    >
+      Войти с Google
+    </button>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="loginWithApple()"
+    >
+      Войти с Apple
+    </button>
+  </mat-card>
+</div>

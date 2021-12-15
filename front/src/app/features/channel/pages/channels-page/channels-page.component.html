@@ -1,0 +1,37 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container mt-5">
+  <mat-card>
+    <h2 mat-card-title>Каналы</h2>
+
+    <button mat-button (click)="openCreateDialog()">Новый канал рекламы</button>
+    <a mat-button routerLink="/">Вернуться</a>
+  </mat-card>
+
+  <mat-list>
+    <h3 matSubheader>Все каналы</h3>
+    <div *ngFor="let channel of allChannels">
+      <app-channel-item
+        [allChannels]="allChannels"
+        [channel]="channel"
+      ></app-channel-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+  <mat-list>
+    <h3 matSubheader>Активные каналы</h3>
+    <div *ngFor="let channel of activeChannels">
+      <app-channel-item
+        [activeChannels]="activeChannels"
+        [channel]="channel"
+      ></app-channel-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+</div>

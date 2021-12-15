@@ -1,0 +1,55 @@
+<div>
+  <h3 *ngIf="type === ActionType.Create">Создать пользователя</h3>
+  <form [formGroup]="upsertForm" (ngSubmit)="submit()">
+    <mat-form-field class="full-width">
+      <mat-label>Основное имя</mat-label>
+      <input
+        type="text"
+        formControlName="firstName"
+        placeholder="Введите первое имя"
+        matInput
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Второе имя</mat-label>
+      <input
+        type="text"
+        formControlName="lastName"
+        placeholder="Введите второе имя"
+        matInput
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+    <mat-label>Номер телефона</mat-label>
+      <input
+        type="text"
+        formControlName="mobileNumber"
+        placeholder="Введите второе имя"
+        matInput
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+      <input
+        type="text"
+        formControlName="email"
+        placeholder="Введите второе имя"
+        matInput
+      />
+    </mat-form-field>
+    <mat-slide-toggle
+      class="d-block mb-3"
+      color="primary"
+      formControlName="isPublic"
+    >
+      Не блокирован
+    </mat-slide-toggle>
+    <button mat-raised-button>
+      {{ type === ActionType.Create ? 'Create' : 'Update' }}
+    </button>
+  </form>
+</div>
+
+<ng-template #update>
+  <h3>Обновить пользователя {{ user.firstName }}</h3>
+</ng-template>

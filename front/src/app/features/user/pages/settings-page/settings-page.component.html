@@ -1,0 +1,108 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container">
+  <mat-card>
+    <h2 mat-card-title>Настройки</h2>
+    <p mat-card-subtitle>Изменить ваш аккаунт</p>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="updateUsername()">
+      <h3>Ваше имя</h3>
+      <mat-form-field class="full-width mb-1">
+        <mat-label>Ваше имя</mat-label>
+        <input
+          type="text"
+          formControlName="firstName"
+          placeholder="Введите новое имя"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button mat-button mat-raised-button color="primary">
+          Изменить имя
+        </button>
+      </mat-card-actions>
+    </form>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="updateMobileNumber()">
+      <h3>Ваш номер телефона</h3>
+      <mat-form-field class="full-width mb-1">
+        <mat-label>Ваш номер телефона</mat-label>
+        <input
+          type="text"
+          formControlName="mobileNumber"
+          placeholder="Введите новый номер"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button mat-button mat-raised-button color="primary">
+          Изменить номер телефона
+        </button>
+      </mat-card-actions>
+    </form>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="updateEmail()">
+      <h3>Email</h3>
+      <mat-form-field class="full-width mb-1">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Введите новый email"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button mat-button mat-raised-button color="primary">
+          Изменить email
+        </button>
+      </mat-card-actions>
+    </form>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="updatePassword()">
+      <h3>Пароль</h3>
+      <mat-form-field class="full-width" *ngIf="!user.isSocial">
+        <mat-label>Правильный пароль</mat-label>
+        <input
+          type="password"
+          formControlName="currentPassword"
+          placeholder="Введите текущий пароль"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Новый пароль</mat-label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Введите новый пароль"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width mb-1">
+        <mat-label>Подтвердить пароль</mat-label>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Подтвердите новый пароль"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <a routerLink="/" mat-button mat-raised-button>Назад</a>
+        <button mat-button mat-raised-button color="primary">
+          Имзменить пароль
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

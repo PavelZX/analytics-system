@@ -1,0 +1,37 @@
+<div>
+  <h3 *ngIf="type === ActionType.Create">Создать рекламную компанию</h3>
+  <form [formGroup]="upsertForm" (ngSubmit)="submit()">
+    <mat-form-field class="full-width">
+      <mat-label>Наименование</mat-label>
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="Введите наименование рекламной компании"
+        matInput
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Описание</mat-label>
+      <input
+        type="text"
+        formControlName="description"
+        placeholder="Введите описание рекламной компании"
+        matInput
+      />
+    </mat-form-field>
+    <mat-slide-toggle
+      class="d-block mb-3"
+      color="primary"
+      formControlName="isActive"
+    >
+      Активация
+    </mat-slide-toggle>
+    <button mat-raised-button>
+      {{ type === ActionType.Create ? 'Create' : 'Update' }}
+    </button>
+  </form>
+</div>
+
+<ng-template #update>
+  <h3>Обновить рекламную компанию {{ advertising.title }}</h3>
+</ng-template>

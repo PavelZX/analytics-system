@@ -1,2 +1,1 @@
-# analytics-system
-Система аналитики для рекламных компаний
+# analytics-system v0

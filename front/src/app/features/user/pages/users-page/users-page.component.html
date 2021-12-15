@@ -1,0 +1,37 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container mt-5">
+  <mat-card>
+    <h2 mat-card-title>Пользователи</h2>
+
+    <button mat-button (click)="openCreateDialog()">Новый пользователь</button>
+    <a mat-button routerLink="/">Вернуться</a>
+  </mat-card>
+
+  <mat-list>
+    <h3 matSubheader>Зарегистрированные пользователи</h3>
+    <div *ngFor="let user of allUsers">
+      <app-user-item
+        [allUsers]="allUsers"
+        [user]="user"
+      ></app-user-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+  <mat-list>
+    <h3 matSubheader>Активные пользователи</h3>
+    <div *ngFor="let user of publicUsers">
+      <app-user-item
+        [publicUsers]="publicUsers"
+        [user]="user"
+      ></app-user-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+</div>

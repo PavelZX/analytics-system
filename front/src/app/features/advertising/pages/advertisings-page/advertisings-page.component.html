@@ -1,0 +1,49 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container mt-5">
+  <mat-card>
+    <h2 mat-card-title>Рекламные компании</h2>
+
+    <button mat-button (click)="openCreateDialog()">Новая рекламная компания</button>
+    <a mat-button routerLink="/">Вернуться</a>
+  </mat-card>
+
+  <mat-list>
+    <h3 matSubheader>Все рекламные компании</h3>
+    <div *ngFor="let advertising of allAdvertisings">
+      <app-advertising-item
+        [allAdvertisings]="allAdvertisings"
+        [advertising]="advertising"
+      ></app-advertising-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+  <mat-list>
+    <h3 matSubheader>Ваши рекламные компании</h3>
+    <div *ngFor="let advertising of yourAdvertisings">
+      <app-advertising-item
+        [yourAdvertisings]="yourAdvertisings"
+        [advertising]="advertising"
+      ></app-advertising-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+  <mat-list>
+    <h3 matSubheader>Активные рекламные компании</h3>
+    <div *ngFor="let advertising of activeAdvertisings">
+      <app-advertising-item
+        [activeAdvertisings]="activeAdvertisings"
+        [advertising]="advertising"
+      ></app-advertising-item>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+</div>
